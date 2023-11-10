@@ -6,6 +6,8 @@ import Home from "./component/Home";
 import Navbar from "./component/Navbar";
 import Services from "./component/Services";
 import Team from "./component/Team";
+import Footer from "./component/Footer";
+
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
       <Route path="/services" element={ <Services /> } />
       <Route path="/contact" element={ <Contact /> } />
     </Routes>
+
+    <Footer />
+
     </>
   );
 }
