@@ -2,8 +2,9 @@
 module.exports = {
 	content: [
 		"index.js",
-    "./src/**/*.{js,jsx,ts,tsx}",
+		"./src/**/*.{js,jsx,ts,tsx}",
 	],
+	darkMode: 'class',
 	theme: {
 		extend: {},
 	},

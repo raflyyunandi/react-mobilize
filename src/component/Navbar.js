@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import ThemeSwitcher from './ThemeSwitcher';
 
 const svgHome = (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7">
@@ -31,6 +32,12 @@ const svgHire = (
   </svg>
 )
 
+const svgContact = (
+  <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 21">
+    <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M7.24 7.194a24.16 24.16 0 0 1 3.72-3.062m0 0c3.443-2.277 6.732-2.969 8.24-1.46 2.054 2.053.03 7.407-4.522 11.959-4.552 4.551-9.906 6.576-11.96 4.522C1.223 17.658 1.89 14.412 4.121 11m6.838-6.868c-3.443-2.277-6.732-2.969-8.24-1.46-2.054 2.053-.03 7.407 4.522 11.959m3.718-10.499a24.16 24.16 0 0 1 3.719 3.062M17.798 11c2.23 3.412 2.898 6.658 1.402 8.153-1.502 1.503-4.771.822-8.2-1.433m1-6.808a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/>
+  </svg>
+)
+
 const svgToggle = (
   <svg
     className="w-5 h-5"
@@ -59,7 +66,7 @@ function Navbar() {
   return (
     <>
       <header className="py-2 px-2 fixed top-0 left-0 w-full z-40">
-        <div className="mx-auto max-w-xl">
+        <div className="mx-auto max-w-4xl">
           {/* Navigation for mobile */}
           <nav className="backdrop-filter backdrop-blur-lg bg-white bg-opacity-40 rounded-xl items-center shadow-md md:hidden">
             <div className="flex justify-between items-center gap-x-3 px-5 py-2">
@@ -109,49 +116,62 @@ function Navbar() {
                     <span className="ml-2">About</span>
                   </div>
                 </NavLink>
+                <NavLink to="/contact" className={({ isActive }) => isActive ? "bg-gray-200 rounded-xl p-2 w-full md:w-auto transition-all duration-300" : "opacity-50 p-2 w-full md:w-auto hover:bg-gray-200 rounded-xl transition-all duration-300 hover-opacity-100"}>
+                  <div className="flex items-center justify-center">
+                    {svgContact}
+                    <span className="ml-2">Contact</span>
+                  </div>
+                </NavLink>
               </div>
             </div>
           </nav>
           {/* Navigation links */}
 
-{/* Navigation for desktop */}
-<nav className="hidden md:flex md:w-auto md:bg-white md:bg-opacity-40 md:backdrop-filter md:backdrop-blur-lg md:rounded-xl md:items-center md:shadow-md">
-  <div className="flex flex-col md:flex-row px-5 py-2 items-center justify-between w-full">
-    <div className="flex items-center">
-      <NavLink to="/" className={({ isActive }) => isActive ? "bg-gray-200 rounded-xl p-2 w-full md:w-auto transition-all duration-300" : "opacity-50 p-2 w-full md:w-auto hover:bg-gray-200 rounded-xl transition-all duration-300 hover-opacity-100"}>
-        <div className="flex items-center justify-center">
-          {svgHome}
-          <span className="ml-2">Home</span>
-        </div>
-      </NavLink>
-      <NavLink to="/team" className={({ isActive }) => isActive ? "bg-gray-200 rounded-xl p-2 w-full md:w-auto transition-all duration-300" : "opacity-50 p-2 w-full md:w-auto hover:bg-gray-200 rounded-xl transition-all duration-300 hover-opacity-100"}>
-        <div className="flex items-center justify-center">
-          {svgTeam}
-          <span className="ml-2">Team</span>
-        </div>
-      </NavLink>
-      <NavLink to="/blog" className={({ isActive }) => isActive ? "bg-gray-200 rounded-xl p-2 w-full md:w-auto transition-all duration-300" : "opacity-50 p-2 w-full md:w-auto hover:bg-gray-200 rounded-xl transition-all duration-300 hover-opacity-100"}>
-        <div className="flex items-center justify-center">
-          {svgBlog}
-          <span className="ml-2">Blog</span>
-        </div>
-      </NavLink>
-      <NavLink to="/about" className={({ isActive }) => isActive ? "bg-gray-200 rounded-xl p-2 w-full md:w-auto transition-all duration-300" : "opacity-50 p-2 w-full md:w-auto hover:bg-gray-200 rounded-xl transition-all duration-300 hover-opacity-100"}>
-        <div className="flex items-center justify-center">
-          {svgAbout}
-          <span className="ml-2">About</span>
-        </div>
-      </NavLink>
-    </div>
-    <NavLink to="/hire" className="bg-gray-800 rounded-xl p-2 transition-all duration-300 text-white">
-      <div className="flex items-center justify-center">
-        {svgHire}
-        <span className="ml-2">Hire Me</span>
-      </div>
-    </NavLink>
-  </div>
-</nav>
-{/* Navigation for desktop */}
+          {/* Navigation for desktop */}
+          <nav className="hidden md:flex md:w-auto md:bg-white md:bg-opacity-40 md:backdrop-filter md:backdrop-blur-lg md:rounded-xl md:items-center md:shadow-md">
+            <div className="flex flex-col md:flex-row px-5 py-2 items-center justify-between w-full">
+              <div className="flex items-center">
+                <NavLink to="/" className={({ isActive }) => isActive ? "bg-gray-200 rounded-xl p-2 w-full md:w-auto transition-all duration-300" : "opacity-50 p-2 w-full md:w-auto hover:bg-gray-200 rounded-xl transition-all duration-300 hover-opacity-100"}>
+                  <div className="flex items-center justify-center">
+                    {svgHome}
+                    <span className="ml-2">Home</span>
+                  </div>
+                </NavLink>
+                <NavLink to="/team" className={({ isActive }) => isActive ? "bg-gray-200 rounded-xl p-2 w-full md:w-auto transition-all duration-300" : "opacity-50 p-2 w-full md:w-auto hover:bg-gray-200 rounded-xl transition-all duration-300 hover-opacity-100"}>
+                  <div className="flex items-center justify-center">
+                    {svgTeam}
+                    <span className="ml-2">Team</span>
+                  </div>
+                </NavLink>
+                <NavLink to="/blog" className={({ isActive }) => isActive ? "bg-gray-200 rounded-xl p-2 w-full md:w-auto transition-all duration-300" : "opacity-50 p-2 w-full md:w-auto hover:bg-gray-200 rounded-xl transition-all duration-300 hover-opacity-100"}>
+                  <div className="flex items-center justify-center">
+                    {svgBlog}
+                    <span className="ml-2">Blog</span>
+                  </div>
+                </NavLink>
+                <NavLink to="/about" className={({ isActive }) => isActive ? "bg-gray-200 rounded-xl p-2 w-full md:w-auto transition-all duration-300" : "opacity-50 p-2 w-full md:w-auto hover:bg-gray-200 rounded-xl transition-all duration-300 hover-opacity-100"}>
+                  <div className="flex items-center justify-center">
+                    {svgAbout}
+                    <span className="ml-2">About</span>
+                  </div>
+                </NavLink>
+                <NavLink to="/contact" className={({ isActive }) => isActive ? "bg-gray-200 rounded-xl p-2 w-full md:w-auto transition-all duration-300" : "opacity-50 p-2 w-full md:w-auto hover:bg-gray-200 rounded-xl transition-all duration-300 hover-opacity-100"}>
+                  <div className="flex items-center justify-center">
+                    {svgContact}
+                    <span className="ml-2">Contact</span>
+                  </div>
+                </NavLink>
+              </div>
+              <NavLink to="/hire" className="bg-gray-800 rounded-xl p-2 transition-all duration-300 text-white">
+                <div className="flex items-center justify-center">
+                  {svgHire}
+                  <span className="ml-2">Hire Me</span>
+                </div>
+              </NavLink>
+            </div>
+            <ThemeSwitcher/>
+          </nav>
+          {/* Navigation for desktop */}
 
         </div>
       </header>

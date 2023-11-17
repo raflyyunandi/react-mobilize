@@ -39,7 +39,7 @@ function Home() {
   const [buttonText, setButtonText] = useState("Copy Email");
 
   const copyToClipboard = () => {
-    const email = "raflyyunandia@gmail.com"; 
+    const email = "raflyyunandia@gmail.com";
     navigator.clipboard.writeText(email)
       .then(() => {
         setButtonText('Copied');
@@ -51,7 +51,7 @@ function Home() {
   return (
     <>
       <section className="pt-24 pb-24 bg-gray-200">
-        <div className="px-4 mx-auto max-w-xl bg-white rounded-xl shadow-lg md:px-12">
+        <div className="px-4 mx-auto max-w-4xl bg-white rounded-xl shadow-lg md:px-12">
           <div className="w-full mx-auto text-center">
             <h1 className="pt-10 mb-8 text-5xl font-extrabold leading-none text-gray-900 md:text-6xl md:tracking-tight">
               <span>
